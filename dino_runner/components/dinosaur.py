@@ -19,8 +19,6 @@ class Dinosaur:
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
 
-
-
     def update(self, user_input):
         if self.dino_run:
             self.run()
@@ -33,22 +31,26 @@ class Dinosaur:
 
         if self.dino_ducking:
             self.ducking()
-
-        if user_input[pygame.K_UP] and not self.dino_jump and not self.dino_ducking:
-            self.dino_jump = True
-            self.dino_run = False
-        elif not self.dino_jump and not self.dino_ducking:
+        
+        if user_input[pygame.K_UP] and user_input[pygame.K_DOWN]:
             self.dino_jump = False
-            self.dino_run = True
-
-        if user_input[pygame.K_DOWN] and not self.dino_ducking and not self.dino_jump:
-            self.dino_ducking = True
-            self.dino_run = False
-        elif not self.dino_ducking and not self.dino_jump:
             self.dino_ducking = False
             self.dino_run = True
-        
+        else:
+            if user_input[pygame.K_UP] and not self.dino_jump and not self.dino_ducking:
+                self.dino_jump = True
+                self.dino_run = False
+            elif not self.dino_jump and not self.dino_ducking:
+                self.dino_jump = False
+                self.dino_run = True
 
+            if user_input[pygame.K_DOWN] and not self.dino_ducking and not self.dino_jump:
+                self.dino_ducking = True
+                self.dino_run = False
+            elif not self.dino_ducking and not self.dino_jump:
+                self.dino_ducking = False
+                self.dino_run = True
+        
     def draw(self, screen):
         screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
