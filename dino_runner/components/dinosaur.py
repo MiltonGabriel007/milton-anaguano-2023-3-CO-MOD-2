@@ -6,7 +6,7 @@ from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING
 class Dinosaur:
     X_POS = 80
     Y_POS = 310
-    Y_POS_dino_ducking = 345
+    Y_POS_ducking = 345
     JUMP_SPEED = 8.5
 
     def __init__(self):
@@ -19,25 +19,23 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
-        self.Y_POS_dino_ducking
+        self.Y_POS_ducking
 
     def update(self, user_input):
         if self.dino_run:
             self.run()
-        
+        elif self.dino_jump:
+            self.jump()
+        elif self.dino_ducking:
+            self.ducking()
+
         if self.step_index > 10:
             self.step_index = 0
 
-        if self.dino_jump:
-            self.jump()
-
-        if self.dino_ducking:
-            self.ducking()
-        
-        if user_input[pygame.K_UP] and not self.dino_jump and not self.dino_ducking:
+        if user_input[pygame.K_UP] and not self.dino_jump:
             self.dino_jump = True
             self.dino_run = False
-        elif user_input[pygame.K_DOWN] and not self.dino_ducking and not self.dino_jump:
+        elif user_input[pygame.K_DOWN] and not self.dino_ducking:
             self.dino_ducking = True
             self.dino_run = False
         elif not self.dino_ducking and not self.dino_jump:
@@ -70,7 +68,7 @@ class Dinosaur:
         self.image = DUCKING[0] if self.step_index < 5 else DUCKING[1]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS_dino_ducking
+        self.dino_rect.y = self.Y_POS_ducking
         self.dino_ducking = False
         self.step_index += 1
         
