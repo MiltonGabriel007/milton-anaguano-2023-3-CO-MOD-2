@@ -8,6 +8,7 @@ class Obstacle_manager:
 
     def __init__(self):
         self.obstacles = []
+        self.step_index1 = 0
         
     def update(self, game):
 
@@ -20,7 +21,7 @@ class Obstacle_manager:
 
             elif step_index % 2 == 0:
                 cactus = Cactus(SMALL_CACTUS)
-                self.obstacles.append(cactus)
+                self.obstacles.append(cactus) 
 
             elif step_index % 2 == 1:
                 cactus2 = Cactus2(LARGE_CACTUS)
@@ -28,7 +29,6 @@ class Obstacle_manager:
 
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
-            
             if game.player.dino_rect.colliderect(obstacle.rect):
                 game.playing = False
                 break
