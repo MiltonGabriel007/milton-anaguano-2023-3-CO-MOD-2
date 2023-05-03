@@ -19,7 +19,7 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
-        self.Y_POS_ducking
+        self.Y_POS_ducking = self.Y_POS_ducking
 
     def update(self, user_input):
         if self.dino_run:
@@ -71,6 +71,14 @@ class Dinosaur:
         self.dino_rect.y = self.Y_POS_ducking
         self.dino_ducking = False
         self.step_index += 1
+
+    def reset(self):
+        self.dino_rect.x = self.X_POS
+        self.dino_rect.y = self.Y_POS
+        self.dino_run = True
+        self.step_index = 0
+        self.dino_jump = False
+        self.dino_ducking = False
         
        
 

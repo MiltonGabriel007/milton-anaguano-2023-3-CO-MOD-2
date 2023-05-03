@@ -8,7 +8,6 @@ class Obstacle_manager:
 
     def __init__(self):
         self.obstacles = []
-        self.step_index1 = 0
         
     def update(self, game):
 
@@ -36,4 +35,8 @@ class Obstacle_manager:
     def draw(self, screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)
+    
+    def reset_obstacles(self):
+        self.obstacles = []
+        
     
