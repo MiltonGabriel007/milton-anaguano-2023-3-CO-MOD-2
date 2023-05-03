@@ -29,7 +29,6 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
-
         pygame.display.quit()
         pygame.quit()
 
@@ -78,16 +77,17 @@ class Game:
         half_screen_width = SCREEN_WIDTH // 2
         half_screen_height = SCREEN_HEIGHT // 2
         self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
-        self.menu.draw(self.screen)
+        self.menu.draw(self.screen, self.score.count, self.obstacle_manager.dino_deaths, self.score.max_score)
         self.menu.update(self)
 
     def update_score(self):
         self.score.update()
         if self.score.count % 100 == 0 and self.game_speed < 500:
             self.game_speed += 5
-    
+        
     def reset_game(self):
         self.obstacle_manager.reset_obstacles()
         self.game_speed = self.GAME_SPEED
         self.score.reset()
         self.player.reset()
+    
