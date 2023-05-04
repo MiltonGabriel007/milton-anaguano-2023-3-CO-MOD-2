@@ -1,11 +1,11 @@
 import pygame
 
 from pygame.sprite import Sprite 
-from dino_runner.utils.constants import DINORED, DINORED_JUMP, DUCKING_RED, DEFAULT_TYPE, SHIELD_TYPE, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD #RUNNING, JUMPING,DUCKING
+from dino_runner.utils.constants import DEFAULT_TYPE, SHIELD_TYPE, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD, DUCKING_HAMMER, JUMPING_HAMMER, RUNNING_HAMMER, HAMMER_TYPE, RUNNING, JUMPING, DUCKING #DINORED_JUMP, DUCKING_RED DINORED,
 
-RUN_IMAGE = {DEFAULT_TYPE: DINORED, SHIELD_TYPE: RUNNING_SHIELD}
-DUCK_IMAGE = {DEFAULT_TYPE: DUCKING_RED, SHIELD_TYPE: DUCKING_SHIELD}
-JUMP_IMAGE = {DEFAULT_TYPE: DINORED_JUMP, SHIELD_TYPE: JUMPING_SHIELD}
+RUN_IMAGE = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD, HAMMER_TYPE: RUNNING_HAMMER}
+DUCK_IMAGE = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD, HAMMER_TYPE: DUCKING_HAMMER}
+JUMP_IMAGE = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE:JUMPING_HAMMER}
 
 class Dinosaur:
     X_POS = 80
@@ -14,7 +14,7 @@ class Dinosaur:
     JUMP_SPEED = 8.5
 
     def __init__(self):
-        self.image = DINORED[0]
+        self.image = RUNNING[0]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
@@ -28,6 +28,7 @@ class Dinosaur:
         self.image = RUN_IMAGE[self.type][0]
         self.has_power_up = False
         self.power_up_time = 0 
+        #self.hammer_power = True
 
     def update(self, user_input):
         if self.dino_run:
@@ -36,8 +37,12 @@ class Dinosaur:
             self.jump()
         elif self.dino_ducking:
             self.ducking()
+        #if hammer_power:
 
-        if self.step_index > 9:
+        #if user_input[pygame.K_LEFT] and self.type == HAMMER_TYPE:
+         #   self.hammer_power = True
+
+        if self.step_index >= 9:
             self.step_index = 0
 
         if user_input[pygame.K_UP] and not self.dino_jump:
@@ -83,6 +88,7 @@ class Dinosaur:
         self.step_index += 1
 
     def reset(self):
+        self.image = RUNNING[0]
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
         self.dino_run = True
@@ -91,6 +97,9 @@ class Dinosaur:
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
         self.Y_POS_ducking = self.Y_POS_ducking
+        self.type = DEFAULT_TYPE
+        self.has_power_up = False
+        self.power_up_time = 0 
 
        
 

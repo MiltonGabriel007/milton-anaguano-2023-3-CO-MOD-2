@@ -7,9 +7,10 @@ from dino_runner.components.menu import Menu
 from dino_runner.components.counter import Counter
 from dino_runner.components.clouds import Clouds
 from dino_runner.components.powerups.powerup_manager import PowerupManager
+from dino_runner.components.powerups.hammer import Hammer
 
 class Game:
-    GAME_SPEED = 20
+    GAME_SPEED = 18
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -27,6 +28,7 @@ class Game:
         self.score = Counter()
         self.clouds = Clouds(CLOUDS)
         self.powerup_manager = PowerupManager()
+        self.hammer = Hammer()
 
     def execute(self):
         self.running = True
@@ -53,11 +55,14 @@ class Game:
 
     def update(self):
         user_input = pygame.key.get_pressed()
+        print(user_input[pygame.K_RIGHT])
+        #self.hammer.update1(user_input, self.game_speed, self.screen)
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.clouds.update(self.game_speed)
         self.update_score()
         self.powerup_manager.update(self)
+        
 
     def draw(self):
         self.clock.tick(FPS)
@@ -68,6 +73,7 @@ class Game:
         self.obstacle_manager.draw(self.screen)
         self.score.draw(self.screen)
         self.powerup_manager.draw(self.screen)
+        #self.hammer.draw1(self.screen, self.player.type)
         self.power_up()
         pygame.display.update()
         pygame.display.flip()
@@ -92,19 +98,26 @@ class Game:
     def update_score(self):
         self.score.update()
         if self.score.count % 100 == 0 and self.game_speed < 500:
-            self.game_speed += 5
+            self.game_speed += 1
         
     def reset_game(self):
         self.obstacle_manager.reset_obstacles()
+        self.powerup_manager.reset_powerups(self)
         self.game_speed = self.GAME_SPEED
         self.score.reset()
         self.player.reset()
+        #self.screen.fill((241, 240, 250), self.obstacle_manager.image_rect)
     
     def power_up(self):
         if self.player.has_power_up:
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks())/1000, 2)
-            if time_to_show >= 0:
-                self.menu.draw2(self.screen, f"{self.player.type.capitalize()} enabled for {time_to_show} second", 500, 50)
-            else:
+            if  self.player.has_power_up and self.obstacle_manager.hammer_active == True:
+                time_to_show = 0
                 self.player.has_power_up = False
                 self.player.type = DEFAULT_TYPE
+            else:
+                if time_to_show >= 0:
+                    self.menu.draw2(self.screen, f"{self.player.type.capitalize()} enabled for {time_to_show} second", 500, 50)
+                else:
+                    self.player.has_power_up = False
+                    self.player.type = DEFAULT_TYPE

@@ -5,9 +5,3 @@ from dino_runner.utils.constants import SHIELD, SHIELD_TYPE
 class Shield(Powerup):
     def __init__(self):
         super().__init__(SHIELD, SHIELD_TYPE)
-
-   # def update(self):
-    #    pass
-
-    #def draw(self):
-     #   pass
