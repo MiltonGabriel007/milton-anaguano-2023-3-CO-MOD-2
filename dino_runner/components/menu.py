@@ -12,6 +12,8 @@ class Menu:
         self.text = self.font.render(message, True, (0, 0, 0))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = (self.half_screen_width, 500)
+        self.text_rect1 = self.text.get_rect()
+        self.text_rect1.center = (self.half_screen_width, 300)
         
     def update(self, game):
         self.handle_event_on_menu(game)
@@ -46,11 +48,13 @@ class Menu:
                 game.playing = False
             elif event.type == pygame.KEYDOWN:
                 game.run()
-    
+    def draw1(self, screen):
+        screen.blit(self.text, self.text_rect1)
+
     def draw2(self, screen, text, text1, text2):
         font = pygame.font.Font(FONT_STYLE, 25)
         score_show = font.render(f"{text}", True, (0, 0, 0))
         score_show_rect = score_show.get_rect()
         score_show_rect.center = (self.half_screen_width, 100)
         screen.blit(score_show, score_show_rect)
-        
+    

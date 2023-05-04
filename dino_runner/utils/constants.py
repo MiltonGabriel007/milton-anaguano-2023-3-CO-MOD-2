@@ -96,3 +96,7 @@ DUCKING_RED = [
     pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO4.png")),
 ]
 
+DINOMONSTER = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/Dinomonster1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/Dinomonster2.png")),
+]

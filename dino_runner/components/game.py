@@ -22,7 +22,7 @@ class Game:
         self.x_pos_bg = 0
         self.y_pos_bg = 380
         self.player = Dinosaur()
-        self.obstacle_manager = Obstacle_manager()
+        self.obstacle_manager = Obstacle_manager(self)
         self.menu = Menu(self.screen, "Press any key to start...")
         self.running = False
         self.score = Counter()
@@ -91,9 +91,14 @@ class Game:
         self.menu.reset_screen_color(self.screen)
         half_screen_width = SCREEN_WIDTH // 2
         half_screen_height = SCREEN_HEIGHT // 2
-        self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
-        self.menu.draw(self.screen, self.score.count, self.obstacle_manager.dino_deaths, self.score.max_score)
-        self.menu.update(self)
+        if self.obstacle_manager.dino_deaths == 0:
+            self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
+            self.menu.draw1(self.screen)
+            self.menu.update(self)
+        else:
+            self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
+            self.menu.draw(self.screen, self.score.count, self.obstacle_manager.dino_deaths, self.score.max_score)
+            self.menu.update(self)
 
     def update_score(self):
         self.score.update()
