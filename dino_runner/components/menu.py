@@ -46,3 +46,11 @@ class Menu:
                 game.playing = False
             elif event.type == pygame.KEYDOWN:
                 game.run()
+    
+    def draw2(self, screen, text, text1, text2):
+        font = pygame.font.Font(FONT_STYLE, 25)
+        score_show = font.render(f"{text}", True, (0, 0, 0))
+        score_show_rect = score_show.get_rect()
+        score_show_rect.center = (self.half_screen_width, 100)
+        screen.blit(score_show, score_show_rect)
+        

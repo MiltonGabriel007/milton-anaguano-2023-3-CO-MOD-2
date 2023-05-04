@@ -22,7 +22,7 @@ class PowerupManager:
                 powerup.start_time = pygame.time.get_ticks()
                 game.player.has_power_up = True
                 game.player.type = SHIELD_TYPE
-                game.player.power_up_time = powerup.start.time +(self.duration * 1000)
+                game.player.power_up_time = powerup.start_time + (self.duration * 1000)
 
     def draw(self, screen):
         for powerup in self.powerups:
