@@ -6,6 +6,7 @@ from dino_runner.components.obstacles.obstacle_manager import Obstacle_manager
 from dino_runner.components.menu import Menu
 from dino_runner.components.counter import Counter
 from dino_runner.components.clouds import Clouds
+from dino_runner.components.powerups.powerup_manager import PowerupManager
 
 class Game:
     GAME_SPEED = 20
@@ -25,6 +26,7 @@ class Game:
         self.running = False
         self.score = Counter()
         self.clouds = Clouds(CLOUDS)
+        self.powerup_manager = PowerupManager()
 
     def execute(self):
         self.running = True
@@ -55,6 +57,7 @@ class Game:
         self.obstacle_manager.update(self)
         self.clouds.update(self.game_speed)
         self.update_score()
+        self.powerup_manager.update(self)
 
     def draw(self):
         self.clock.tick(FPS)
@@ -64,6 +67,7 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.score.draw(self.screen)
+        self.powerup_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 

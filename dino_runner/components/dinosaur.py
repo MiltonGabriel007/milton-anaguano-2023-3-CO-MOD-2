@@ -1,7 +1,11 @@
 import pygame
 
 from pygame.sprite import Sprite 
-from dino_runner.utils.constants import DINORED, DINORED_JUMP, DUCKING_RED #RUNNING, JUMPING,DUCKING
+from dino_runner.utils.constants import DINORED, DINORED_JUMP, DUCKING_RED, DEFAULT_TYPE, SHIELD_TYPE, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD #RUNNING, JUMPING,DUCKING
+
+RUN_IMAGE = {DEFAULT_TYPE: DINORED, SHIELD_TYPE: RUNNING_SHIELD}
+DUCK_IMAGE = {DEFAULT_TYPE: DUCKING_RED, SHIELD_TYPE: DUCKING_SHIELD}
+JUMP_IMAGE = {DEFAULT_TYPE: DINORED_JUMP, SHIELD_TYPE: JUMPING_SHIELD}
 
 class Dinosaur:
     X_POS = 80
@@ -20,6 +24,10 @@ class Dinosaur:
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
         self.Y_POS_ducking = self.Y_POS_ducking
+        self.type = DEFAULT_TYPE
+        self.image = RUN_IMAGE[self.type][0]
+        self.has_power_up = False
+        self.power_up_time = 0 
 
     def update(self, user_input):
         if self.dino_run:
@@ -47,14 +55,16 @@ class Dinosaur:
         screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
     def run(self):
-        self.image = DINORED[0] if self.step_index < 5 else DINORED[1]
+        #self.image = DINORED[0] if self.step_index < 5 else DINORED[1]
+        self.image = RUN_IMAGE[self.type][self.step_index//5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS
         self.step_index += 1
 
     def jump(self):
-        self.image = DINORED_JUMP
+        #self.image = DINORED_JUMP
+        self.image = JUMP_IMAGE[self.type]
         self.dino_rect.y -= self.jump_speed*4
         self.jump_speed -= 0.8
         
@@ -64,8 +74,8 @@ class Dinosaur:
             self.jump_speed = self.JUMP_SPEED
 
     def ducking(self):
-
         self.image = DUCKING_RED[0] if self.step_index < 5 else DUCKING_RED[1]
+        self.image = DUCK_IMAGE[self.type][self.step_index//5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS
         self.dino_rect.y = self.Y_POS_ducking
