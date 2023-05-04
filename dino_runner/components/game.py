@@ -1,10 +1,11 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUDS
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import Obstacle_manager
 from dino_runner.components.menu import Menu
 from dino_runner.components.counter import Counter
+from dino_runner.components.clouds import Clouds
 
 class Game:
     GAME_SPEED = 20
@@ -23,6 +24,7 @@ class Game:
         self.menu = Menu(self.screen, "Press any key to start...")
         self.running = False
         self.score = Counter()
+        self.clouds = Clouds(CLOUDS)
 
     def execute(self):
         self.running = True
@@ -51,12 +53,14 @@ class Game:
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
         self.obstacle_manager.update(self)
+        self.clouds.update(self.game_speed)
         self.update_score()
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((255, 255, 255))
+        self.screen.fill((241, 240, 250))
         self.draw_background()
+        self.clouds.draw(self.screen)
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.score.draw(self.screen)

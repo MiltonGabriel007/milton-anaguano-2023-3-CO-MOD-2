@@ -1,6 +1,5 @@
 import pygame
 from dino_runner.utils.constants import FONT_STYLE, SCREEN_WIDTH, SCREEN_HEIGHT
-from dino_runner.components.counter import Counter
 
 class Menu:
 
@@ -15,7 +14,7 @@ class Menu:
         self.text_rect.center = (self.half_screen_width, 500)
         
     def update(self, game):
-        self.hundle_event_on_menu(game)
+        self.handle_event_on_menu(game)
         pygame.display.update()
     
     def draw(self, screen, score, deaths, max_score):
@@ -40,7 +39,7 @@ class Menu:
     def reset_screen_color(self, screen):
         screen.fill((255, 255, 255))
 
-    def hundle_event_on_menu(self, game):
+    def handle_event_on_menu(self, game):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game.running = False

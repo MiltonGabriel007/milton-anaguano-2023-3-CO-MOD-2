@@ -72,3 +72,23 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 DEFAULT_TYPE = "default"
 
 FONT_STYLE = "freesansbold.ttf"
+
+CLOUDS = [
+    pygame.image.load(os.path.join(IMG_DIR, "Clouds/Cloud1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Clouds/Cloud2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Clouds/Cloud3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Clouds/Cloud4.png")),
+]
+
+DINORED = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO2.png")),
+]
+
+DINORED_JUMP = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO.png"))
+
+DUCKING_RED = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO4.png")),
+]
+
