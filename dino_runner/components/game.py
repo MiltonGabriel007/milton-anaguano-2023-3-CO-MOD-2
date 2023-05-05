@@ -1,16 +1,16 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUDS, DEFAULT_TYPE
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUDS, DEFAULT_TYPE, GAMEOVER, FONDO2, FONDO3
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import Obstacle_manager
 from dino_runner.components.menu import Menu
 from dino_runner.components.counter import Counter
 from dino_runner.components.clouds import Clouds
 from dino_runner.components.powerups.powerup_manager import PowerupManager
-from dino_runner.components.powerups.hammer import Hammer
+#from dino_runner.components.powerups.hammer import Hammer
 
 class Game:
-    GAME_SPEED = 18
+    GAME_SPEED = 17
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -28,7 +28,7 @@ class Game:
         self.score = Counter()
         self.clouds = Clouds(CLOUDS)
         self.powerup_manager = PowerupManager()
-        self.hammer = Hammer()
+        #self.hammer = Hammer()
 
     def execute(self):
         self.running = True
@@ -66,7 +66,12 @@ class Game:
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((241, 240, 250))
+        if self.score.count < 300:
+            self.screen.blit(FONDO2, (0, 0))
+        else:
+            self.screen.blit(FONDO3, (0, 0))
+            
+        #self.screen.fill((241, 240, 250))
         self.draw_background()
         self.clouds.draw(self.screen)
         self.player.draw(self.screen)
@@ -97,6 +102,7 @@ class Game:
             self.menu.update(self)
         else:
             self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
+            self.screen.blit(GAMEOVER, (half_screen_width-200, 40))
             self.menu.draw(self.screen, self.score.count, self.obstacle_manager.dino_deaths, self.score.max_score)
             self.menu.update(self)
 

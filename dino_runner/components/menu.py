@@ -1,5 +1,5 @@
 import pygame
-from dino_runner.utils.constants import FONT_STYLE, SCREEN_WIDTH, SCREEN_HEIGHT
+from dino_runner.utils.constants import FONT_STYLE, SCREEN_WIDTH, SCREEN_HEIGHT, FONDO1
 
 class Menu:
 
@@ -7,7 +7,8 @@ class Menu:
     half_screen_height = SCREEN_HEIGHT // 2
     
     def __init__(self, screen, message):
-        screen.fill((255, 255, 255))
+        screen.blit(FONDO1, (0, 0))
+        #screen.fill((255, 255, 255))
         self.font = pygame.font.Font(FONT_STYLE, 30)
         self.text = self.font.render(message, True, (0, 0, 0))
         self.text_rect = self.text.get_rect()
@@ -39,7 +40,8 @@ class Menu:
         screen.blit(self.text, self.text_rect)
 
     def reset_screen_color(self, screen):
-        screen.fill((241, 240, 250))
+        screen.blit(FONDO1, (0, 0))
+        #screen.fill((241, 240, 250))
 
     def handle_event_on_menu(self, game):
         for event in pygame.event.get():

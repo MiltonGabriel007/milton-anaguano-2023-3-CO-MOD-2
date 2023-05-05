@@ -3,7 +3,7 @@ import random
 from dino_runner.components.cactus import Cactus, Cactus2
 from dino_runner.components.bird import Bird
 from dino_runner.components.dinomonster import DinoMonster
-from dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, BIRD, SHIELD_TYPE, HAMMER_TYPE, DEFAULT_TYPE, HAMMER, SCREEN_WIDTH, DINOMONSTER
+from dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, BIRD, SHIELD_TYPE, HAMMER_TYPE, HAMMER, SCREEN_WIDTH, DINOMONSTER
 #from dino_runner.components.powerups.hammer import Hammer
 
 class Obstacle_manager:

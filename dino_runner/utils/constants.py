@@ -100,3 +100,9 @@ DINOMONSTER = [
     pygame.image.load(os.path.join(IMG_DIR, "DinoRED/Dinomonster1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "DinoRED/Dinomonster2.png")),
 ]
+
+GAMEOVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
+
+FONDO1 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO.png"))
+FONDO2 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO2.png"))
+FONDO3 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO3.png"))
