@@ -8,7 +8,7 @@ from dino_runner.components.clouds import Clouds
 from dino_runner.components.powerups.powerup_manager import PowerupManager
 
 class Game:
-    GAME_SPEED = 20
+    GAME_SPEED = 15
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -20,7 +20,7 @@ class Game:
         self.x_pos_bg = 0
         self.y_pos_bg = 380
         self.player = Dinosaur()
-        self.obstacle_manager = Obstacle_manager(self)
+        self.obstacle_manager = Obstacle_manager()
         self.menu = Menu(self.screen, "Press any key to start...")
         self.running = False
         self.score = Counter()
@@ -53,7 +53,6 @@ class Game:
 
     def update(self):
         user_input = pygame.key.get_pressed()
-        print(user_input[pygame.K_RIGHT])
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.clouds.update(self.game_speed)
@@ -70,7 +69,7 @@ class Game:
         self.draw_background()
         self.clouds.draw(self.screen)
         self.player.draw(self.screen)
-        self.obstacle_manager.draw(self,self.screen)
+        self.obstacle_manager.draw(self, self.screen)
         self.score.draw(self.screen)
         self.powerup_manager.draw(self.screen)
         self.power_up()
@@ -107,7 +106,7 @@ class Game:
         
     def reset_game(self):
         self.obstacle_manager.reset_obstacles()
-        self.powerup_manager.reset_powerups(self)
+        self.powerup_manager.reset_powerups()
         self.game_speed = self.GAME_SPEED
         self.score.reset()
         self.player.reset()
