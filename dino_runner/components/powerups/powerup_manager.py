@@ -13,7 +13,7 @@ class PowerupManager:
         self.duration = random.randint(3, 5)
         self.appears_when = random.randint(50, 70)
         #self.appears_when = list_power
-        self.index = 1
+        self.index = 0
 
     def update(self, game):
         #self.index = random.randint(0,1)  
@@ -47,7 +47,7 @@ class PowerupManager:
     def reset_powerups(self, game):
         self.powerups = []
         self.appears_when = random.randint(50, 70)
-        self.index = 1
+        self.index = 0
         #self.appears_when = list_power
         
     def generate_powerup(self):

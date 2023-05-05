@@ -106,3 +106,7 @@ GAMEOVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
 FONDO1 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO.png"))
 FONDO2 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO2.png"))
 FONDO3 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO3.png"))
+
+os.chdir(r"C:\Users\USER\Documents\Jala-University\milton-anaguano-2023-3-CO-MOD-2")
+pygame.mixer.init()
+MUSIC = pygame.mixer.Sound(os.path.join(IMG_DIR, "DinoRED/Like_Dino!.mp3"))

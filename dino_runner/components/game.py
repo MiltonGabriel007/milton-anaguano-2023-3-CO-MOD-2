@@ -1,6 +1,6 @@
 import pygame
-
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUDS, DEFAULT_TYPE, GAMEOVER, FONDO2, FONDO3
+import os
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUDS, DEFAULT_TYPE, GAMEOVER, FONDO2, FONDO3, MUSIC
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import Obstacle_manager
 from dino_runner.components.menu import Menu
@@ -13,6 +13,7 @@ class Game:
     GAME_SPEED = 17
     def __init__(self):
         pygame.init()
+        pygame.mixer.init()
         pygame.display.set_caption(TITLE)
         pygame.display.set_icon(ICON)
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -29,6 +30,7 @@ class Game:
         self.clouds = Clouds(CLOUDS)
         self.powerup_manager = PowerupManager()
         #self.hammer = Hammer()
+        MUSIC.play()
 
     def execute(self):
         self.running = True
