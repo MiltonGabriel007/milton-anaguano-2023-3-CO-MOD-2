@@ -53,10 +53,9 @@ class Menu:
     def draw1(self, screen):
         screen.blit(self.text, self.text_rect1)
 
-    def draw2(self, screen, text, text1, text2):
+    def draw2(self, screen, text, x_pos, y_pos):
         font = pygame.font.Font(FONT_STYLE, 25)
-        score_show = font.render(f"{text}", True, (0, 0, 0))
-        score_show_rect = score_show.get_rect()
-        score_show_rect.center = (self.half_screen_width, 100)
-        screen.blit(score_show, score_show_rect)
-    
+        show_power_time = font.render(f"{text}", True, (0, 0, 0))
+        show_power_time1 = show_power_time.get_rect()
+        show_power_time1.center = (x_pos, y_pos)
+        screen.blit(show_power_time, show_power_time1.center)

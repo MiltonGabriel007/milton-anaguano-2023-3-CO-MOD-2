@@ -1,7 +1,6 @@
 import pygame
-
 from pygame.sprite import Sprite 
-from dino_runner.utils.constants import DEFAULT_TYPE, SHIELD_TYPE, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD, DUCKING_HAMMER, JUMPING_HAMMER, RUNNING_HAMMER, HAMMER_TYPE, RUNNING, JUMPING, DUCKING, DINORED_JUMP, DUCKING_RED, DINORED
+from dino_runner.utils.constants import DEFAULT_TYPE, SHIELD_TYPE, DUCKING_HAMMER, JUMPING_HAMMER, RUNNING_HAMMER, HAMMER_TYPE, RUNNING, JUMPING, DUCKING, DINORED_JUMP, DUCKING_RED, DINORED
 
 RUN_IMAGE = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: DINORED, HAMMER_TYPE: RUNNING_HAMMER}
 DUCK_IMAGE = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_RED, HAMMER_TYPE: DUCKING_HAMMER}
@@ -28,7 +27,7 @@ class Dinosaur:
         self.image = RUN_IMAGE[self.type][0]
         self.has_power_up = False
         self.power_up_time = 0 
-        #self.hammer_power = True
+        self.hammer_active = False
 
     def update(self, user_input):
         if self.dino_run:
@@ -37,10 +36,6 @@ class Dinosaur:
             self.jump()
         elif self.dino_ducking:
             self.ducking()
-        #if hammer_power:
-
-        #if user_input[pygame.K_LEFT] and self.type == HAMMER_TYPE:
-         #   self.hammer_power = True
 
         if self.step_index >= 9:
             self.step_index = 0
@@ -55,6 +50,9 @@ class Dinosaur:
             self.dino_ducking = False
             self.dino_jump = False
             self.dino_run = True
+
+        if user_input[pygame.K_RIGHT] and self.type == HAMMER_TYPE: 
+            self.hammer_active = True
         
     def draw(self, screen):
         screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
@@ -100,6 +98,4 @@ class Dinosaur:
         self.type = DEFAULT_TYPE
         self.has_power_up = False
         self.power_up_time = 0 
-
-       
-
+        self.hammer_active = False
