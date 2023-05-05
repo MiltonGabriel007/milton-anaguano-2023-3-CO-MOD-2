@@ -42,7 +42,7 @@ class PowerupManager:
     def reset_powerups(self):
         self.powerups = []
         self.appears_when = random.randint(50, 70)
-        self.index = 1
+        self.index = 0
         
     def generate_powerup(self):
         self.appears_when = random.randint(100, 300)

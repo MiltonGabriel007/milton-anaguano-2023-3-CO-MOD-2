@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from dino_runner.components.powerups.powerup import Powerup
-from dino_runner.utils.constants import HAMMER, HAMMER_TYPE, SCREEN_WIDTH #DEFAULT_TYPE
+from dino_runner.utils.constants import HAMMER, HAMMER_TYPE
 
 class Hammer(Powerup, Sprite):
     def __init__(self):

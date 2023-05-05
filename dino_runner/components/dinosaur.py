@@ -9,7 +9,7 @@ JUMP_IMAGE = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: DINORED_JUMP, HAMMER_TYPE:JUMP
 class Dinosaur:
     X_POS = 80
     Y_POS = 310
-    Y_POS_ducking = 345
+    Y_POS_ducking = 330
     JUMP_SPEED = 8.5
 
     def __init__(self):
