@@ -1,16 +1,16 @@
 import pygame
 from pygame.sprite import Sprite
 from dino_runner.components.powerups.powerup import Powerup
-from dino_runner.utils.constants import HAMMER, HAMMER_TYPE
+from dino_runner.utils.constants import HAMMER_RED, HAMMER_TYPE
 
 class Hammer(Powerup, Sprite):
     def __init__(self):
-        super().__init__(HAMMER, HAMMER_TYPE)
+        super().__init__(HAMMER_RED, HAMMER_TYPE)
 
 class Hammer1(Sprite):
     X_POS = 80
     def __init__(self):
-        self.image = HAMMER
+        self.image = HAMMER_RED
         self.image_rect = self.image.get_rect()
         self.image_rect.x = self.X_POS
 

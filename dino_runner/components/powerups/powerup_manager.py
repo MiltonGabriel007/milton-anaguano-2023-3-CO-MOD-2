@@ -9,7 +9,7 @@ class PowerupManager:
         self.powerups = []
         self.duration = random.randint(3, 5)
         self.appears_when = random.randint(50, 70)
-        self.index = 0
+        self.index = 1
 
     def update(self, game):
         #controlamos las apariciones del powerup
@@ -42,7 +42,7 @@ class PowerupManager:
     def reset_powerups(self):
         self.powerups = []
         self.appears_when = random.randint(50, 70)
-        self.index = 0
+        self.index = 1
         
     def generate_powerup(self):
         self.appears_when = random.randint(100, 300)

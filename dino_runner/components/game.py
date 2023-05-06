@@ -26,7 +26,7 @@ class Game:
         self.score = Counter()
         self.clouds = Clouds(CLOUDS)
         self.powerup_manager = PowerupManager()
-        MUSIC.play()
+        #MUSIC.play()
 
     def execute(self):
         self.running = True

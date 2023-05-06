@@ -9,7 +9,7 @@ FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
-ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO1.png"))
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -96,12 +96,46 @@ DUCKING_RED = [
     pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO4.png")),
 ]
 
+DINORED_HAMMER = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_HAMMER3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_HAMMER4.png")),
+]
+
+DUCKING_HAMMER_RED = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_HAMMER1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_HAMMER2.png")),
+]
+
+JUMP_HAMMER_RED = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_HAMMER5.png"))    
+
+DINORED_SHIELD = [ 
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_SHIELD3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_SHIELD4.png")),
+]
+
+DUCKING_SHIELD_RED = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_SHIELD1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_SHIELD2.png")),
+]
+
+JUMP_SHIELD_RED = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/DINO_SHIELD5.png"))
+
 DINOMONSTER = [
     pygame.image.load(os.path.join(IMG_DIR, "DinoRED/Dinomonster1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "DinoRED/Dinomonster2.png")),
 ]
 
 GAMEOVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
+
+SHIELD_RED = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/SHIELD.png"))
+HAMMER_RED =pygame.image.load(os.path.join(IMG_DIR, "DinoRED/HAMMER1.png"))
+
+HAMMER_RED2 = [
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/HAMMER1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/HAMMER2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/HAMMER3.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "DinoRED/HAMMER4.png")),
+]
 
 FONDO1 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO.png"))
 FONDO2 = pygame.image.load(os.path.join(IMG_DIR, "DinoRED/FONDO2.png"))
