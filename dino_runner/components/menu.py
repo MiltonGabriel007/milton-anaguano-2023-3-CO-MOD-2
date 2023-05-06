@@ -14,7 +14,7 @@ class Menu:
         self.text_rect = self.text.get_rect()
         self.text_rect.center = (self.half_screen_width, 500)
         self.text_rect1 = self.text.get_rect()
-        self.text_rect1.center = (self.half_screen_width, 300)
+        self.text_rect1.center = (self.half_screen_width, 315)
         
     def update(self, game):
         self.handle_event_on_menu(game)

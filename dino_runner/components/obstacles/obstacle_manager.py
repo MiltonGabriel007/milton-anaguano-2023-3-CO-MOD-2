@@ -4,7 +4,7 @@ from dino_runner.components.cactus import Cactus, Cactus2
 from dino_runner.components.bird import Bird
 from dino_runner.components.dinomonster import DinoMonster
 from dino_runner.components.powerups.hammer import Hammer1
-from dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, BIRD, SHIELD_TYPE, DINOMONSTER, HAMMER_RED2
+from dino_runner.utils.constants import SMALL_CACTUS, LARGE_CACTUS, BIRD, SHIELD_TYPE, DINOMONSTER, HAMMER_RED2, SCREEN_WIDTH, HAMMER_TYPE
 
 class Obstacle_manager:
     def __init__(self):
@@ -13,6 +13,7 @@ class Obstacle_manager:
         self.dino_deaths = 0
         self.hammer = Hammer1()
         self.step_index = 0
+        self.last_y = 0
         
     def update(self, game):  
         if len(self.obstacles) == 0:        
@@ -45,11 +46,13 @@ class Obstacle_manager:
                 if self.hammer.image_rect.colliderect(obstacle.rect):
                     self.obstacles.remove(obstacle)
                     game.player.hammer_active= False
+                elif self.hammer.image_rect.x > SCREEN_WIDTH:
+                    game.player.hammer_active= False
 
             if game.player.dino_rect.colliderect(obstacle.rect):
                 #controlando si el dino tiene shield o no
                 if game.player.type != SHIELD_TYPE:
-                    game.playing = False
+                    #game.playing = False
                     self.dino_deaths += 1
                     break 
                 else:

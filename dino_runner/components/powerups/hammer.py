@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from dino_runner.components.powerups.powerup import Powerup
-from dino_runner.utils.constants import HAMMER_RED, HAMMER_TYPE
+from dino_runner.utils.constants import HAMMER_RED, HAMMER_TYPE, SCREEN_WIDTH
 
 class Hammer(Powerup, Sprite):
     def __init__(self):
@@ -14,11 +14,10 @@ class Hammer1(Sprite):
         self.image_rect = self.image.get_rect()
         self.image_rect.x = self.X_POS
 
-    def update(self, y, x):
-        self.image_rect.y = y
-
-        self.image_rect.x += x
-        print("velovidad x", x)
+    def update(self, dino_y_pos, game_speed):
+        self.image_rect.y = dino_y_pos
+        self.image_rect.x += game_speed
+        print("velovidad x", game_speed)
         print(self.image_rect.x)
 
     def reset_pos(self):

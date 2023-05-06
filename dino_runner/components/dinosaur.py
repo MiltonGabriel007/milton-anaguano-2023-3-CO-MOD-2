@@ -9,7 +9,7 @@ JUMP_IMAGE = {DEFAULT_TYPE: DINORED_JUMP, SHIELD_TYPE: JUMP_SHIELD_RED, HAMMER_T
 class Dinosaur:
     X_POS = 80
     Y_POS = 310
-    Y_POS_ducking = 330
+    Ducking_Y_POS = 330
     JUMP_SPEED = 8.5
 
     def __init__(self):
@@ -22,7 +22,7 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
-        self.Y_POS_ducking = self.Y_POS_ducking
+        self.Y_POS_ducking = self.Ducking_Y_POS
         self.type = DEFAULT_TYPE
         self.image = RUN_IMAGE[self.type][0]
         self.has_power_up = False
@@ -94,7 +94,7 @@ class Dinosaur:
         self.dino_jump = False
         self.jump_speed = self.JUMP_SPEED
         self.dino_ducking = False
-        self.Y_POS_ducking = self.Y_POS_ducking
+        self.Y_POS_ducking = self.Ducking_Y_POS
         self.type = DEFAULT_TYPE
         self.has_power_up = False
         self.power_up_time = 0 

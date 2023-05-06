@@ -86,16 +86,17 @@ class Game:
         self.x_pos_bg -= self.game_speed
 
     def show_menu(self):
+        ICON1 = pygame.transform.scale(ICON, (157, 124))
         self.menu.reset_screen_color(self.screen)
         half_screen_width = SCREEN_WIDTH // 2
         half_screen_height = SCREEN_HEIGHT // 2
         if self.obstacle_manager.dino_deaths == 0:
-            self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
+            self.screen.blit(ICON1, (half_screen_width - 80, half_screen_height - 140))
             self.menu.draw1(self.screen)
             self.menu.update(self)
         else:
-            self.screen.blit(ICON, (half_screen_width - 50, half_screen_height - 140))
-            self.screen.blit(GAMEOVER, (half_screen_width-200, 40))
+            self.screen.blit(ICON1, (half_screen_width - 80, half_screen_height - 140))
+            self.screen.blit(GAMEOVER, (half_screen_width-180, 40))
             self.menu.draw(self.screen, self.score.count, self.obstacle_manager.dino_deaths, self.score.max_score)
             self.menu.update(self)
 
