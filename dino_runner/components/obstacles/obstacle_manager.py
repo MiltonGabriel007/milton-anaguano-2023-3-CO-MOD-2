@@ -52,7 +52,7 @@ class Obstacle_manager:
             if game.player.dino_rect.colliderect(obstacle.rect):
                 #controlando si el dino tiene shield o no
                 if game.player.type != SHIELD_TYPE:
-                    #game.playing = False
+                    game.playing = False
                     self.dino_deaths += 1
                     break 
                 else:
@@ -66,7 +66,6 @@ class Obstacle_manager:
             self.step_index = 0
 
         if game.player.hammer_active:
-            #screen.blit(self.image[self.step_index // 5], self.rect)
             screen.blit(self.image[self.step_index], self.hammer.image_rect)
             self.step_index += 1
             

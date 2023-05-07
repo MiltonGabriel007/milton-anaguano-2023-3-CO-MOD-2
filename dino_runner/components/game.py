@@ -61,7 +61,7 @@ class Game:
 
     def draw(self):
         self.clock.tick(FPS)
-        if self.score.count < 300:
+        if self.score.count % 600 < 300:
             self.screen.blit(FONDO2, (0, 0))
         else:
             self.screen.blit(FONDO3, (0, 0))

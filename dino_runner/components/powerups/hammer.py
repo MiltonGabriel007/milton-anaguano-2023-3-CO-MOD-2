@@ -17,8 +17,6 @@ class Hammer1(Sprite):
     def update(self, dino_y_pos, game_speed):
         self.image_rect.y = dino_y_pos
         self.image_rect.x += game_speed
-        print("velovidad x", game_speed)
-        print(self.image_rect.x)
 
     def reset_pos(self):
         self.image_rect.x = self.X_POS

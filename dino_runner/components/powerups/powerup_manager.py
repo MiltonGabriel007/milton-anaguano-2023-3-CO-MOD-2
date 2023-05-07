@@ -6,14 +6,19 @@ from dino_runner.utils.constants import SHIELD_TYPE, HAMMER_TYPE
 
 class PowerupManager:
     def __init__(self):
+        self.X = 20
+        self.Y = 100
         self.powerups = []
         self.duration = random.randint(3, 5)
-        self.appears_when = random.randint(50, 70)
         self.index = 0
 
     def update(self, game):
+        appears_when = random.randint(self.X,self.Y)
         #controlamos las apariciones del powerup
-        if len(self.powerups) == 0 and self.appears_when == game.score.count:
+        if game.score.count % 100 == 0:
+            self.X += 100
+            self.Y += 100      
+        if len(self.powerups) == 0 and appears_when == game.score.count:
             self.generate_powerup()
         #llamamos a la animacion del powerup
         for powerup in self.powerups:
@@ -34,11 +39,11 @@ class PowerupManager:
             powerup.draw(screen)
 
     def reset_powerups(self):
+        self.X = 20
+        self.Y = 100
         self.powerups = []
-        self.appears_when = random.randint(50, 70)
         
     def generate_powerup(self):
-        self.appears_when = random.randint(100, 300)
         index = random.randint(0,1)
         if index  == 0:
             powerup = Shield()
